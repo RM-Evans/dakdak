@@ -1,8 +1,13 @@
 <script setup>
+
 import { ref } from 'vue';
+
+const props = defineProps({
+  catClicked: Boolean
+})
 </script>
 <template>
-  <div class="spinner">
+  <div class="spinner" :class="{ spinning: catClicked }">
     <img src="../assets/pearlVec.png" alt="Loading..." class="pearlImg" />
   </div>
   </template>
@@ -12,13 +17,18 @@ import { ref } from 'vue';
   height:300px;
 }
 .spinner {
-  width: 100px;
-  height: 100px;
+  position: fixed;
+  top: 40%;
+right: 50%;
+  left: 50%;
+
   display: flex;
       justify-content: center;
       align-items: center;
-  border-radius: 50%;
-  animation: rotate 2s linear infinite; /* Apply the animation */
+}
+.spinning {
+  animation: rotate 2s linear infinite;
+ 
 }
 @keyframes rotate {
   0% { transform: rotate(0deg); }
